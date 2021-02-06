@@ -23,18 +23,25 @@
 
 'use strict';
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', ''),
-       c = prompt('Один из последних просмотренных фильмов?', '');
+// const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', ''),
+//        c = prompt('Один из последних просмотренных фильмов?', '');
 
 let personalMovieDB = {
-    count: `${numberOfFilms}`,
+    // count: `${numberOfFilms}`,
     movies: {},
-    actors: {},
+    actors: {border : 'black',
+            bg: 'red'},
     genres: [],
     privat: false
 };
 
+// console.log(Object.keys(personalMovieDB).length);
 
+
+
+const {border, bg} = personalMovieDB.actors;
+
+console.log(border)
         
 
 // personalMovieDB.movies[a] = b;
@@ -57,18 +64,18 @@ let personalMovieDB = {
 4) Потренироваться и переписать цикл еще двумя способами*/
 
 
-for ( let i = 0; i < 2; i++){
-    const   a = prompt('Один из последних просмотренных фильмов?', ''),
-            b = prompt('На сколько оцените его?', '');
+// for ( let i = 0; i < 2; i++){
+//     const   a = prompt('Один из последних просмотренных фильмов?', ''),
+//             b = prompt('На сколько оцените его?', '');
 
-            if(a === '' || b === '' || a === null || b === null || a.length > 50){
-                console.log('error');
-                i--;
-            } else {
-                personalMovieDB.movies[a] = b;
-            }
+//             if(a === '' || b === '' || a === null || b === null || a.length > 50){
+//                 console.log('error');
+//                 i--;
+//             } else {
+//                 personalMovieDB.movies[a] = b;
+//             }
             
-    };
+//     };
     // let i = 0;
     // while ( i < 2) {
     //     const   a = prompt('Один из последних просмотренных фильмов?', ''),
