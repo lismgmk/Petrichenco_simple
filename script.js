@@ -23,25 +23,100 @@
 
 'use strict';
 
-// const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', ''),
-//        c = prompt('Один из последних просмотренных фильмов?', '');
+
+
+   
 
 let personalMovieDB = {
-    // count: `${numberOfFilms}`,
+    count: 0,
     movies: {},
     actors: {border : 'black',
             bg: 'red'},
     genres: [],
-    privat: false
+    privat: false,
+    startOne: () => {
+        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+        while(personalMovieDB.count === '' ||personalMovieDB.count === null){
+            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+        }
+    },
+    start: () => {
+        for ( let i = 0; i < 2; i++){
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+            b = prompt('На сколько оцените его?', '');
+    
+            if(a === '' || b === '' || a === null || b === null || a.length > 50){
+                console.log('error');
+                i--;
+            } else {
+                personalMovieDB.movies[a] = b;
+            }           
+        }
+    },
+    countMovie: () => {
+        if ( personalMovieDB.count < 10) {
+            alert('Просмотрено мало фильмов')
+        } 
+        else if (personalMovieDB.count < 30 && personalMovieDB.count > 10 ) {
+            alert('Вы классический зритель')
+        } 
+        else if (personalMovieDB.count > 50) {
+            alert('Вы киноман')
+        } 
+        else{
+            alert("Произошла ошибка")
+        }
+    },
+    toggleVisibleMyDB: () => {
+        if(personalMovieDB.privat){
+            personalMovieDB.privat = false
+        } else{
+            personalMovieDB.privat = true
+        }
+    },
+    writeYourGenres: () => {
+   
+        for ( let i = 0; i < 1; i++){
+            // const ganre = prompt(`Ваш любимый жанр под номером? ${i}`, ''),
+            const ganreElthe = prompt(`Введите жанры через запятую`, '').toLowerCase();
+               
+            if(ganreElthe === '' || ganreElthe === null){
+                console.log('error');
+                i--;
+            } else {
+                personalMovieDB.genres = ganreElthe.split(',');
+            }           
+        }
+    
+    
+        
+            //     if(ganre === '' || ganre === null){
+            //         console.log('error');
+            //         i--;
+            //     } else {
+            //         personalMovieDB.genres[i-1] = ganre;
+            //     }           
+            // }
+            personalMovieDB.genres.forEach((element, i) => {
+                console.log(`Любимый жанр ${i + 1} это ${element}`)
+            });
+    }
 };
+
+personalMovieDB.startOne();
+personalMovieDB.start();
+personalMovieDB.countMovie();
+personalMovieDB.toggleVisibleMyDB();
+console.log(personalMovieDB);
+personalMovieDB.writeYourGenres();
 
 // console.log(Object.keys(personalMovieDB).length);
 
 
 
-const {border, bg} = personalMovieDB.actors;
+// const {border, bg} = personalMovieDB.actors;
 
-console.log(border)
+// console.log(border)
         
 
 // personalMovieDB.movies[a] = b;
@@ -64,18 +139,10 @@ console.log(border)
 4) Потренироваться и переписать цикл еще двумя способами*/
 
 
-// for ( let i = 0; i < 2; i++){
-//     const   a = prompt('Один из последних просмотренных фильмов?', ''),
-//             b = prompt('На сколько оцените его?', '');
 
-//             if(a === '' || b === '' || a === null || b === null || a.length > 50){
-//                 console.log('error');
-//                 i--;
-//             } else {
-//                 personalMovieDB.movies[a] = b;
-//             }
-            
-//     };
+
+// askPeople();
+
     // let i = 0;
     // while ( i < 2) {
     //     const   a = prompt('Один из последних просмотренных фильмов?', ''),
@@ -103,19 +170,25 @@ console.log(border)
     //         }
     // }   while ( i < 2);
 
-console.log(personalMovieDB);
 
-if (personalMovieDB.count < 10) {
-    alert('Просмотрено мало фильмов')
-} 
 
-else if (personalMovieDB.count < 30 && personalMovieDB.count > 10 ) {
-    alert('Вы классический зритель')
-} 
 
-else if (personalMovieDB.count > 50) {
-    alert('Вы киноман')
-} 
-else{
-    alert("Произошла ошибка")
-}
+
+
+// * Задание на урок:
+
+// 1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
+// перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
+// Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
+
+// 2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
+// переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
+
+// 3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
+// Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
+// при помощи метода forEach вывести в консоль сообщения в таком виде:
+// "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+
+'use strict';
+
+// Код возьмите из предыдущего домашнего задания
